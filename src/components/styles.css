@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: burlywood;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: antiquewhite;
+}
+
+.sl-slide {
+    display: none;
+}
+
+.sl-slide.active {
+    display: block;
+}
+
+.sl-slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+}
+
+.nav-dots {
+    text-align: center;
+}
+
+.nav-dots span {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+    background: burlywood;
+    border-radius: 50%;
+}
+
+.nav-dot-current {
+    background-color: #333 !important;
+}
+
+.sl-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.sl-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    /* Start off-screen */
+    opacity: 0;
+    transition: all 2.5s ease-in-out;
+    /* Smooth transition for slide */
+}
+
+.sl-slide.active {
+    left: 0;
+    opacity: 1;
+}
+
+.sl-slide.transitioning {
+    /* top: -100%;
+    opacity: 0; */
+    /* Move the previous slide out of view */
+    transition: all 2s ease-in-out;
+}
+
+.bg-img {
+    width: 100%;
+    height: 50vh;
+}
+
+.sl-slide-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: burlywood;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.sl-slide-inner h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.sl-slide-inner blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.sl-slide-inner blockquote p {
+    margin-bottom: 10px;
+}
+
+.sl-slide-inner blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Example background images */
+.bg-img-1 {
+    background: url('images/1.jpg') no-repeat 50% 50%;
+}
+
+.bg-img-2 {
+    background: url('images/2.jpg') no-repeat 50% 50%;
+}
+
+.bg-img-3 {
+    background: url('images/3.jpg') no-repeat 50% 50%;
+}
+
+.bg-img-4 {
+    background: url('images/4.jpg') no-repeat 50% 50%;
+}
+
+.bg-img-5 {
+    background: url('images/5.jpg') no-repeat 50% 50%;
+}
+
+.bg-img {
+    --n: 6;
+    /* number of tiles*/
+    --d: 10px;
+    /* the distance of top/bottom movement */
+    --s: 1.1;
+    /* control the horizontal distance  1>= (1:no distance)*/
+
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 30px;
+    position: relative;
+    overflow: hidden;
+    background-size: 0 0;
+    transition: 2s;
+}
+
+.bg-img>* {
+    position: absolute;
+    top: var(--d);
+    left: 0;
+    right: 0;
+    bottom: var(--d);
+    background-image: inherit;
+    background-size: cover;
+    -webkit-mask: linear-gradient(#fff, #fff) no-repeat;
+    -webkit-mask-size: calc(100%/var(--n) + 1px) 100%;
+    -webkit-mask-position: var(--p) 50%;
+    mask: linear-gradient(#fff, #fff) no-repeat;
+    mask-size: calc(100%/var(--n) + 1px) 100%;
+    mask-position: var(--p) 50%;
+    transition: inherit;
+    transform-origin: var(--p) 50%;
+}
+
+/* we define as many as possible to cover the max value used */
+.bg-img> :nth-child(1) {
+    --p: calc(0*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(2) {
+    --p: calc(1*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(3) {
+    --p: calc(2*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(4) {
+    --p: calc(3*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(5) {
+    --p: calc(4*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(6) {
+    --p: calc(5*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(7) {
+    --p: calc(6*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(8) {
+    --p: calc(7*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(9) {
+    --p: calc(8*100%/(var(--n) - 1));
+}
+
+.bg-img> :nth-child(10) {
+    --p: calc(9*100%/(var(--n) - 1));
+}
+
+.transitioning .bg-img> :nth-child(odd) {
+    transform: translateY(var(--d)) scale(calc(1/var(--s)));
+    opacity: 1;
+}
+
+.transitioning .bg-img> :nth-child(even) {
+    transform: translateY(calc(-1*var(--d))) scale(calc(1/var(--s)));
+    opacity: 1;
+}
+
+.transitioning .bg-img {
+    transform: scale(var(--s));
+    opacity: 0;
+}
+
+.componentContent {
+    padding: 1rem;
+}
+
+.contact-us {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us h2 {
+    text-align: center;
+    color: burlywood;
+}
+
+.contact-us form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-us label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.contact-us input,
+.contact-us textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.contact-us input:focus,
+.contact-us textarea:focus {
+    border-color: burlywood;
+    outline: none;
+}
+
+.contact-us button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #d1bb9d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 1rem;
+}
+
+.contact-us button:hover {
+    background-color: burlywood;
+}
+
+.contact-us form div {
+    display: flex;
+    justify-content: space-between;
+    margin: .5rem 0;
+    flex-direction: column;
+    padding: .2rem 1rem;
+}
+
+.form-message {
+    padding: .2rem 1rem;
+}
